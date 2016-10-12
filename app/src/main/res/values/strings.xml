@@ -1,0 +1,10 @@
+<resources>
+    <string name="CISytem">CISytem</string>
+    <string name="users_prompt">Choose a User</string>
+
+    <string-array name="users_arrays">
+        <item>Admin</item>
+        <item>Students</item>
+
+    </string-array>
+</resources>
