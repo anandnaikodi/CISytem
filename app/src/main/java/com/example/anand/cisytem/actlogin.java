@@ -17,5 +17,6 @@ public class actlogin extends AppCompatActivity {
     {
         Intent in= new Intent(this,actsignup.class);
         startActivity(in);
+        //bbaah
     }
 }
