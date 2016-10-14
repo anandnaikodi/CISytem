@@ -85,7 +85,8 @@
         android:text="Clear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_clear" />
+        android:id="@+id/btn_clear"
+        />
 
 
 </LinearLayout>
