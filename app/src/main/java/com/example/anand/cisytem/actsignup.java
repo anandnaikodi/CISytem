@@ -2,6 +2,7 @@ package com.example.anand.cisytem;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,16 +21,12 @@ import java.util.Map;
 
 
 public class actsignup extends AppCompatActivity  implements View.OnClickListener{
-    private static final String REGISTER_URL = "http://192.168.43.53/CIS/student_signup.php";
+    private static final String REGISTER_URL = "http://192.168.0.101:8080/CIS/student_signup.php";
 
     public static final String KEY_NAME = "name";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_TABLE = "table";
-
-
-
-
 
     private EditText Textname;
     private EditText TextEmail;
@@ -91,7 +88,26 @@ public class actsignup extends AppCompatActivity  implements View.OnClickListene
         requestQueue.add(stringRequest);
     }
 
-
+    public boolean validate(){
+        boolean valid =true;
+        if(Textname.getText().toString().trim().isEmpty() || Textname.length()>32)
+        {
+            Textname.setError("Please enter a valid name");
+            valid=false;
+        }
+        if(TextEmail.getText().toString().trim().isEmpty()|| !Patterns.EMAIL_ADDRESS.matcher(TextEmail.getText().toString().trim()).matches()) {
+            TextEmail.setError("Please enter a valid email address");
+            valid= false;
+        }
+        if(TextPassword.getText().toString().trim().isEmpty()){
+            TextPassword.setError("Please Enter password");
+            valid=false;
+        }
+        if (TextconPassword.getText().toString().trim().isEmpty()){
+            TextconPassword.setError("Please Re-Enter Password");
+        }
+        return valid;
+    }
     public void onClick(View v) {
         if(v==buttonSubmit) {
             if(!TextPassword.getText().toString().equals(TextconPassword.getText().toString()))
@@ -102,14 +118,27 @@ public class actsignup extends AppCompatActivity  implements View.OnClickListene
             }
             String testing=seluser.getSelectedItem().toString();
             System.out.println("testing="+testing);
-
-
             if (testing.equals("Admin")) {
                 System.out.println("inside admin if");
-                registerUser("classrepresentative");
+                if(!validate())
+                {
+                    Toast.makeText(this,"Sign Up Failed ",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    registerUser("classrepresentative");
+                }
+
             } else if (testing.equals("Student")) {
                 System.out.println("inside student if");
-                registerUser("student");
+                if(!validate())
+                {
+                    Toast.makeText(this,"Sign Up Failed ",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    registerUser("student");
+                }
             }
         }
     }

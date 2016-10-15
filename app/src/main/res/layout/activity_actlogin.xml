@@ -42,7 +42,7 @@
         android:text="Is admin ?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/checkBox2" />
+        android:id="@+id/chk_admin" />
 
     <Button
         android:text="LOGIN"
