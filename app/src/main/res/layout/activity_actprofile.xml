@@ -9,5 +9,13 @@
         android:text="Large Text"
         android:id="@+id/textViewUsername"
         android:layout_gravity="center_horizontal" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="click here"
+        android:id="@+id/link"
+        android:layout_gravity="center_horizontal"
+        android:onClick="openimage"/>
 
 </LinearLayout>

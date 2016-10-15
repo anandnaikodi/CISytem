@@ -1,5 +1,6 @@
 package com.example.anand.cisytem;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
@@ -58,19 +59,22 @@ public class actsignup extends AppCompatActivity  implements View.OnClickListene
         final String username = Textname.getText().toString().trim();
         final String email = TextEmail.getText().toString().trim();
         final String password = TextPassword.getText().toString().trim();
-
+        final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        loading.dismiss();
                         Toast.makeText(actsignup.this,response,Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(actsignup.this,error.toString(),Toast.LENGTH_LONG).show();
+                    public void onErrorResponse(VolleyError volleyError) {
+                        loading.dismiss();
+                        Toast.makeText(actsignup.this, volleyError.getMessage().toString(),Toast.LENGTH_LONG).show();
                     }
+
                 }){
             @Override
             protected Map<String,String> getParams(){

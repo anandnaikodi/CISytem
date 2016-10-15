@@ -3,6 +3,7 @@ package com.example.anand.cisytem;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -22,5 +23,11 @@ public class actprofile extends AppCompatActivity {
         Intent intent = getIntent();
 
         textView.setText("Welcome User " + intent.getStringExtra(actlogin.KEY_EMAIL));
+    }
+    public void openimage(View v)
+    {
+        Intent in= new Intent(this,actuploadimg.class);
+        startActivity(in);
+        //bbaah
     }
 }

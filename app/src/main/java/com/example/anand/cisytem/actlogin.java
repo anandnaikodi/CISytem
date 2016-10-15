@@ -1,5 +1,6 @@
 package com.example.anand.cisytem;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -54,6 +55,7 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
         username = TextUsername.getText().toString().trim();
         password = TextPassword.getText().toString().trim();
         final String table=tablelocal;
+        final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -63,14 +65,16 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
                             openProfile();
                             System.out.println("inside success2");
                         }else{
+                            loading.dismiss();
                             Toast.makeText(actlogin.this,response,Toast.LENGTH_LONG).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(actlogin.this,error.toString(),Toast.LENGTH_LONG ).show();
+                    public void onErrorResponse(VolleyError volleyError) {
+                        loading.dismiss();
+                        Toast.makeText(actlogin.this,volleyError.getMessage().toString(),Toast.LENGTH_LONG ).show();
                     }
                 }){
             @Override
