@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.anand.cisytem">
-    <uses-permission android:name="android.permission.INTERNET"/>
 
-   <application
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="CISystem"
@@ -16,9 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".actsignup"></activity>
-       <activity android:name=".actprofile"></activity>
-       <activity android:name=".actuploadimg"></activity>
+        <activity android:name=".actsignup" />
+        <activity android:name=".actprofile" />
+        <activity android:name=".actuploadimg" />
+        <activity
+            android:name=".actadminprofile"
+            android:label="@string/title_activity_actadminprofile"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

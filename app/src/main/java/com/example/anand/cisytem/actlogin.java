@@ -1,6 +1,5 @@
 package com.example.anand.cisytem;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class actlogin extends AppCompatActivity implements View.OnClickListener{
-    public static final String LOGIN_URL = "http://192.168.0.101:8080/CIS/login.php";
+    public static final String LOGIN_URL = "http://192.168.43.163:8080/CIS/login.php";
 
     public static final String KEY_EMAIL="email";
     public static final String KEY_PASSWORD="password";
@@ -55,17 +54,17 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
         username = TextUsername.getText().toString().trim();
         password = TextPassword.getText().toString().trim();
         final String table=tablelocal;
-        final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
+        //final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if(response.trim().equals("success")){
                             System.out.println("inside success");
-                            openProfile();
+                            openProfile(table);
                             System.out.println("inside success2");
                         }else{
-                            loading.dismiss();
+                            //loading.dismiss();
                             Toast.makeText(actlogin.this,response,Toast.LENGTH_LONG).show();
                         }
                     }
@@ -73,7 +72,7 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        loading.dismiss();
+                       // loading.dismiss();
                         Toast.makeText(actlogin.this,volleyError.getMessage().toString(),Toast.LENGTH_LONG ).show();
                     }
                 }){
@@ -91,14 +90,27 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
         requestQueue.add(stringRequest);
     }
 
-    public void openProfile(){
-        Intent inn = new Intent(this,actprofile.class);
-        System.out.println("inside success22");
-        inn.putExtra(KEY_EMAIL, username);
-        System.out.println(username);
-        System.out.println("inside success222");
-        startActivity(inn);
-        System.out.println("inside success2223");
+    public void openProfile(String tablelocal){
+        final String table2=tablelocal;
+        if(table2.equals("classrepresentative")) {
+            Intent inn = new Intent(this, actadminprofile.class);
+            System.out.println("inside success22");
+            inn.putExtra(KEY_EMAIL, username);
+            System.out.println(username);
+            System.out.println("inside success222");
+            startActivity(inn);
+            System.out.println("inside success2223");
+        }
+        else
+        {
+            Intent inn2 = new Intent(this, actprofile.class);
+            System.out.println("inside success22");
+            inn2.putExtra(KEY_EMAIL, username);
+            System.out.println(username);
+            System.out.println("inside success222");
+            startActivity(inn2);
+            System.out.println("inside success2223");
+        }
     }
 
     //@Override

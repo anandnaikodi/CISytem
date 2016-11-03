@@ -22,7 +22,7 @@ import java.util.Map;
 
 
 public class actsignup extends AppCompatActivity  implements View.OnClickListener{
-    private static final String REGISTER_URL = "http://192.168.0.101:8080/CIS/student_signup.php";
+    private static final String REGISTER_URL = "http://192.168.43.163:8080/CIS/student_signup.php";
 
     public static final String KEY_NAME = "name";
     public static final String KEY_EMAIL = "email";

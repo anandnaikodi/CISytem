@@ -40,7 +40,7 @@ public class actuploadimg extends AppCompatActivity implements View.OnClickListe
 
     private int PICK_IMAGE_REQUEST = 1;
 
-    private String UPLOAD_URL ="http://192.168.0.101:8080/CIS/upload.php";
+    private String UPLOAD_URL ="http://192.168.43.163:8080/CIS/upload.php";
 
     private String KEY_IMAGE = "image";
     private String KEY_NAME = "name";
