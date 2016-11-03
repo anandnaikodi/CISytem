@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class actlogin extends AppCompatActivity implements View.OnClickListener{
-    public static final String LOGIN_URL = "http://192.168.43.163:8080/CIS/login.php";
+    public static final String LOGIN_URL = constants.url+"/CIS/login.php";
 
     public static final String KEY_EMAIL="email";
     public static final String KEY_PASSWORD="password";
