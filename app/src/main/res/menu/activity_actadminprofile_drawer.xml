@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_addcategory"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Add Category" />
+        <item
+            android:id="@+id/nav_listcategory"
+            android:icon="@mipmap/ic_launcher"
+            android:title="List Category" />
+        <item
+            android:id="@+id/nav_annoucement"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Announcement" />
+
+    </group>
+
+
+</menu>
