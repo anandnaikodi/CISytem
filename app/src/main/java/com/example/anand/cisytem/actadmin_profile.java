@@ -1,9 +1,9 @@
 package com.example.anand.cisytem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -15,13 +15,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class actadminprofile extends AppCompatActivity
+public class actadmin_profile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_actadminprofile);
+        setContentView(R.layout.activity_actadmin_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -29,8 +29,11 @@ public class actadminprofile extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                Intent in = new Intent(actadmin_profile.this,actuploadimg.class);
+                startActivity(in);
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
 
@@ -42,7 +45,7 @@ public class actadminprofile extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        displaySelectedScreen(R.id.nav_addcategory);
+        displaySelectedScreen(R.id.nav_home);
     }
 
     @Override
@@ -83,11 +86,11 @@ public class actadminprofile extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_addcategory) {
+        if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_listcategory) {
+        } else if (id == R.id.nav_category) {
 
-        } else if (id == R.id.nav_annoucement) {
+        } else if (id == R.id.nav_upload) {
 
         }
 
@@ -105,14 +108,14 @@ public class actadminprofile extends AppCompatActivity
 
         //initializing the fragment object which is selected
         switch (itemId) {
-            case R.id.nav_addcategory:
-                fragment = new actadmin_addcategory();
+            case R.id.nav_home:
+                fragment = new actadmin_home();
                 break;
-            case R.id.nav_listcategory:
-                fragment = new actadmin_listcategory();
+            case R.id.nav_category:
+                fragment = new actadmin_category();
                 break;
-            case R.id.nav_annoucement:
-                fragment = new actadmin_announcement();
+            case R.id.nav_upload:
+                fragment = new actadmin_upload();
                 break;
         }
 

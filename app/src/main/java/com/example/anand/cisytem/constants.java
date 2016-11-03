@@ -5,7 +5,7 @@ package com.example.anand.cisytem;
  */
 
 public class constants {
-    static String url="http://192.168.43.163:8080";
+    static String url="http://192.168.43.53";
     /*public constants() {
         super();
     }*/

@@ -4,17 +4,17 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_addcategory"
+            android:id="@+id/nav_home"
             android:icon="@mipmap/ic_launcher"
-            android:title="Add Category" />
+            android:title="home" />
         <item
-            android:id="@+id/nav_listcategory"
+            android:id="@+id/nav_category"
             android:icon="@mipmap/ic_launcher"
-            android:title="List Category" />
+            android:title="category" />
         <item
-            android:id="@+id/nav_annoucement"
+            android:id="@+id/nav_upload"
             android:icon="@mipmap/ic_launcher"
-            android:title="Announcement" />
+            android:title="Upload" />
 
     </group>
 

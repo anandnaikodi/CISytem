@@ -93,7 +93,7 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
     public void openProfile(String tablelocal){
         final String table2=tablelocal;
         if(table2.equals("classrepresentative")) {
-            Intent inn = new Intent(this, actadminprofile.class);
+            Intent inn = new Intent(this, actadmin_profile.class);
             System.out.println("inside success22");
             inn.putExtra(KEY_EMAIL, username);
             System.out.println(username);

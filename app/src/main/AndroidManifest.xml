@@ -21,9 +21,10 @@
         <activity android:name=".actprofile" />
         <activity android:name=".actuploadimg" />
         <activity
-            android:name=".actadminprofile"
+            android:name=".actadmin_profile"
             android:label="@string/title_activity_actadminprofile"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".actadmin_addannouncement"></activity>
     </application>
 
 </manifest>
