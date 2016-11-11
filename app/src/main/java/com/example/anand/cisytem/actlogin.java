@@ -156,7 +156,7 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
 
     public void opensigup(View v)
     {
-        Intent in= new Intent(this,actsignup.class);
+        Intent in= new Intent(this,MainActivity.class);
         startActivity(in);
         //bbaah
     }

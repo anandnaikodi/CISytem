@@ -20,6 +20,7 @@
         <activity android:name=".actsignup" />
         <activity android:name=".actprofile" />
         <activity android:name=".actuploadimg" />
+        <activity android:name=".MainActivity"/>
         <activity
             android:name=".actadmin_profile"
             android:label="@string/title_activity_actadminprofile"
