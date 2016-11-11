@@ -51,12 +51,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         loading = ProgressDialog.show(this,"Please wait...","Fetching...",false,false);
 
-        String url = config.DATA_URL+editTextId.getText().toString().trim();
+        String url = constants.url+"/CIS/getData.php?id="+editTextId.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 loading.dismiss();
+                System.out.println(response);
                 showJSON(response);
             }
         },
@@ -77,15 +78,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String password = "";
 
         try {
+
             JSONObject jsonObject = new JSONObject(response);
             JSONArray result = jsonObject.getJSONArray("result");
             JSONObject collegeData = result.getJSONObject(0);
-            //name = collegeData.getString(config.KEY_NAME);
             name=collegeData.getString("name");
             email = collegeData.getString("email");
             password = collegeData.getString("password");
-//            email = collegeData.getString(config.KEY_ADDRESS);
-//            password = collegeData.getString(config.KEY_VC);
         } catch (JSONException e) {
             e.printStackTrace();
         }
