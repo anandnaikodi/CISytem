@@ -8,8 +8,11 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loading = ProgressDialog.show(this,"Please wait...","Fetching...",false,false);
 
         String url = constants.url+"/CIS/getData.php?id="+editTextId.getText().toString().trim();
-
+        url="http://192.168.43.53/CIS/fetchrow.php?q=SELECT+*+FROM+student";
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -71,24 +74,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
+void  listing() {
+    try {
+        String[] items = {"abc", "def", "hjfhf"};
+        ListView testing = (ListView) findViewById(R.id.lsttrying);
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+        testing.setAdapter(itemsAdapter);
+
+        testing.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+
+                String item = ((TextView) view).getText().toString();
+
+                Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
+
+            }
+        });
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 
     private void showJSON(String response){
+        String temp="";
         String name="";
         String email="";
         String password = "";
-
+        listing();
         try {
 
             JSONObject jsonObject = new JSONObject(response);
             JSONArray result = jsonObject.getJSONArray("result");
-            JSONObject collegeData = result.getJSONObject(0);
-            name=collegeData.getString("name");
-            email = collegeData.getString("email");
-            password = collegeData.getString("password");
+            for(int i=0;i<result.length();i++) {
+                JSONObject collegeData = result.getJSONObject(i);
+                name = collegeData.getString("name");
+                email = collegeData.getString("email");
+                password = collegeData.getString("password");
+                temp=temp+" "+name+email+password;
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        textViewResult.setText("Name:\t"+name+"\nEmail:\t" +email+ "\nPassword:\t"+ password);
+        //textViewResult.setText("Name:\t"+name+"\nEmail:\t" +email+ "\nPassword:\t"+ password);
+        textViewResult.setText(temp);
     }
 
     @Override

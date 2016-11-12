@@ -25,7 +25,7 @@ public class actadmin_home extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //returning our layout file
         //change R.layout.yourlayoutfilename for each of your fragments
-        return inflater.inflate(R.layout.activity_adminfrag_addcategory, container, false);
+        return inflater.inflate(R.layout.activity_adminfrag_home, container, false);
     }
 
 

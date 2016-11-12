@@ -20,12 +20,13 @@
         <activity android:name=".actsignup" />
         <activity android:name=".actprofile" />
         <activity android:name=".actuploadimg" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".actadmin_profile"
             android:label="@string/title_activity_actadminprofile"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".actadmin_addannouncement"></activity>
+        <activity android:name=".actadmin_addannouncement" />
+        <activity android:name=".actadmin_category_edit"></activity>
     </application>
 
 </manifest>

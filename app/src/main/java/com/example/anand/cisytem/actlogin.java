@@ -58,8 +58,10 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
         StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
                 new Response.Listener<String>() {
                     @Override
+
                     public void onResponse(String response) {
                         if(response.trim().equals("success")){
+// TODO: 12-11-2016 get id from db and store it in constants 
                             System.out.println("inside success");
                             openProfile(table);
                             System.out.println("inside success2");
@@ -156,7 +158,9 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
 
     public void opensigup(View v)
     {
-        Intent in= new Intent(this,MainActivity.class);
+        // TODO: 12-11-2016 add proper redirect
+        //Intent in= new Intent(this,MainActivity.class);
+        Intent in= new Intent(this,actadmin_profile.class);
         startActivity(in);
         //bbaah
     }
