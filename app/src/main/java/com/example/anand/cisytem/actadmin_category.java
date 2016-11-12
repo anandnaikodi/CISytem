@@ -129,13 +129,13 @@ private void loaddata()
                                         long id) {
 
                     String item = ((TextView) view).getText().toString();
-                    //String str="positoin="+position+"id="+id+"item="+item;
-                    //Toast.makeText(getActivity(), str, Toast.LENGTH_LONG).show();
+                    String str="positoin="+position+"id="+id+"item="+item;
+                    Toast.makeText(getActivity(), str, Toast.LENGTH_LONG).show();
                     openedit(position);
                 }
             });
     }
-    private void openedit(int itemid)
+     void openedit(int itemid)
     {
         Intent in=new Intent(getActivity(),actadmin_category_edit.class);
         in.putExtra("itemid",itemid);

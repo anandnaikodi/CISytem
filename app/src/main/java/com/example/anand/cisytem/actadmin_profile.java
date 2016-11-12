@@ -30,7 +30,7 @@ public class actadmin_profile extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                Intent in = new Intent(actadmin_profile.this,actuploadimg.class);
+                Intent in = new Intent(actadmin_profile.this,actadmin_addannouncement.class);
                 startActivity(in);
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
