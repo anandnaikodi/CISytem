@@ -23,6 +23,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.net.URLEncoder;
+
 /**
  * Created by anand on 03-11-2016.
  */
@@ -35,6 +37,8 @@ import org.json.JSONObject;
 
 
 public class actadmin_category extends Fragment {
+
+    String[] id_array;
 
     @Nullable
     @Override
@@ -50,13 +54,23 @@ public class actadmin_category extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
+
         getActivity().setTitle("List Category");
         loaddata();
     }
 private void loaddata()
 {
 // TODO: 12-11-2016 proper url with cr id
-    String url="http://192.168.43.53/CIS/fetchrow.php?q=SELECT+*+FROM+category";
+    String query="select * from category";
+    try{
+        query= URLEncoder.encode(query,"UTF-8");
+    }
+    catch (Exception e)
+    {
+        e.printStackTrace();
+    }
+
+    String url=constants.url+"/CIS/fetchrow.php?q="+query;
 
     StringRequest stringRequest = new StringRequest(Request.Method.POST,url ,
             new Response.Listener<String>() {
@@ -83,7 +97,7 @@ private void loaddata()
     private void makeJSON(String response){
         String temp="";
         System.out.println("inside makeJson");
-        String[] id;
+
         String[] crid;
         String[] classroomid;
         String[] name;
@@ -94,7 +108,7 @@ private void loaddata()
             JSONObject jsonObject = new JSONObject(response);
             JSONArray result = jsonObject.getJSONArray("result");
             int size=result.length();
-            id=new String[size];
+            id_array=new String[size];
             crid=new String[size];
             classroomid=new String[size];
             name= new  String[size];
@@ -102,11 +116,11 @@ private void loaddata()
 
             for(int i=0;i<result.length();i++) {
                 JSONObject collegeData = result.getJSONObject(i);
-                id[i] = collegeData.getString("id");
+                id_array[i] = collegeData.getString("id");
                 crid[i] = collegeData.getString("crid");
                 name[i] = collegeData.getString("name");
                 classroomid[i] = collegeData.getString("classroomid");
-                //temp=temp+" "+id[i]+crid[0]+name[i]+classroomid[i];
+                //temp=temp+" "+id_array[i]+crid[0]+name[i]+classroomid[i];
             }
             loadlist(name);
 
@@ -130,15 +144,17 @@ private void loaddata()
 
                     String item = ((TextView) view).getText().toString();
                     String str="positoin="+position+"id="+id+"item="+item;
-                    Toast.makeText(getActivity(), str, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getActivity(), str, Toast.LENGTH_LONG).show();
                     openedit(position);
                 }
             });
     }
      void openedit(int itemid)
     {
+        String db_id=id_array[itemid];
+        //System.out.println(db_id);
         Intent in=new Intent(getActivity(),actadmin_category_edit.class);
-        in.putExtra("itemid",itemid);
+        in.putExtra("db_id",db_id);
         startActivity(in);
     }
 

@@ -160,7 +160,8 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
     {
         // TODO: 12-11-2016 add proper redirect
         //Intent in= new Intent(this,MainActivity.class);
-        Intent in= new Intent(this,actadmin_profile.class);
+        Intent in= new Intent(this,actstudent_profile.class);
+        //Intent in= new Intent(this,actsignup.class);
         startActivity(in);
         //bbaah
     }

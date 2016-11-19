@@ -26,7 +26,8 @@
             android:label="@string/title_activity_actadminprofile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".actadmin_addannouncement" />
-        <activity android:name=".actadmin_category_edit"></activity>
+        <activity android:name=".actadmin_category_edit" />
+        <activity android:name=".actstudent_profile"></activity>
     </application>
 
 </manifest>

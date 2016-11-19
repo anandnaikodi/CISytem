@@ -26,7 +26,8 @@ public class actprofile extends AppCompatActivity {
     }
     public void openimage(View v)
     {
-        Intent in= new Intent(this,actadmin_addannouncement.class);
+        //Intent in= new Intent(this,actadmin_addannouncement.class);
+        Intent in= new Intent(this,actuploadimg.class);
         startActivity(in);
         //bbaah
     }
