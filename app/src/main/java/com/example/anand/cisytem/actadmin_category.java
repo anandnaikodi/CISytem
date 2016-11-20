@@ -72,7 +72,7 @@ private void loaddata()
 
     String url=constants.url+"/CIS/fetchrow.php?q="+query;
 
-    StringRequest stringRequest = new StringRequest(Request.Method.POST,url ,
+    StringRequest stringRequest = new StringRequest(Request.Method.GET,url ,
             new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -86,7 +86,14 @@ private void loaddata()
                 @Override
                 public void onErrorResponse(VolleyError volleyError) {
                     // loading.dismiss();
-                    Toast.makeText(getActivity(),volleyError.getMessage().toString(),Toast.LENGTH_LONG ).show();
+                    // Toast.makeText(actlogin.this,volleyError.getMessage().toString(),Toast.LENGTH_LONG ).show();
+                    if(volleyError.getMessage()!=null) {
+                        Toast.makeText(getActivity(), volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity(), "server connection failed", Toast.LENGTH_LONG).show();
+                    }
                 }
             });
 
