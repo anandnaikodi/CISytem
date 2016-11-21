@@ -75,7 +75,12 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
                        // loading.dismiss();
-                        Toast.makeText(actlogin.this,volleyError.getMessage().toString(),Toast.LENGTH_LONG ).show();
+                        if(volleyError.getMessage()!=null) {
+                            Toast.makeText(actlogin.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        }
+                        else
+                            Toast.makeText(actlogin.this, "server connection problem", Toast.LENGTH_LONG).show();
+
                     }
                 }){
             @Override
@@ -105,7 +110,7 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
         }
         else
         {
-            Intent inn2 = new Intent(this, actprofile.class);
+            Intent inn2 = new Intent(this, actstudent_profile.class);
             System.out.println("inside success22");
             inn2.putExtra(KEY_EMAIL, username);
             System.out.println(username);
@@ -161,7 +166,7 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
         // TODO: 12-11-2016 add proper redirect
         //Intent in= new Intent(this,MainActivity.class);
         //Intent in= new Intent(this,actstudent_profile.class);
-        Intent in= new Intent(this,actsignup.class);
+        Intent in= new Intent(this,actadmin_profile.class);
         //Intent in= new Intent(this,actsignup.class);
         startActivity(in);
         //bbaah

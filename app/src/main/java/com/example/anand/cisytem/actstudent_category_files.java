@@ -1,12 +1,8 @@
 package com.example.anand.cisytem;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -25,29 +21,19 @@ import org.json.JSONObject;
 
 import java.net.URLEncoder;
 
-
-public class tab2 extends Fragment {
-
+public class actstudent_category_files extends AppCompatActivity {
     String[] id_array;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab2, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_actstudent_category_files);
+    loaddata();
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        //you can set the title for your toolbar here for different fragments different titles
-
-        //getActivity().setTitle("List Category");
-        loaddata();
-    }
     private void loaddata()
     {
 // TODO: 12-11-2016 proper url with cr id
-        String query="select * from category";
+        String query="select * from files";
         try{
             query= URLEncoder.encode(query,"UTF-8");
         }
@@ -74,16 +60,16 @@ public class tab2 extends Fragment {
                         // loading.dismiss();
                         // Toast.makeText(actlogin.this,volleyError.getMessage().toString(),Toast.LENGTH_LONG ).show();
                         if(volleyError.getMessage()!=null) {
-                            Toast.makeText(getActivity(), volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(actstudent_category_files.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
                         }
                         else
                         {
-                            Toast.makeText(getActivity(), "server connection failed", Toast.LENGTH_LONG).show();
+                            Toast.makeText(actstudent_category_files.this, "server connection failed", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        RequestQueue requestQueue = Volley.newRequestQueue(actstudent_category_files.this);
         requestQueue.add(stringRequest);
     }
 
@@ -91,8 +77,8 @@ public class tab2 extends Fragment {
         String temp="";
         System.out.println("inside makeJson");
 
-        String[] crid;
-        String[] classroomid;
+        String[] paths;
+        //String[] classroomid;
         String[] name;
         try {
             System.out.println("inside makejason try");
@@ -102,17 +88,17 @@ public class tab2 extends Fragment {
             JSONArray result = jsonObject.getJSONArray("result");
             int size=result.length();
             id_array=new String[size];
-            crid=new String[size];
-            classroomid=new String[size];
+            paths=new String[size];
+            //classroomid=new String[size];
             name= new  String[size];
 
 
             for(int i=0;i<result.length();i++) {
                 JSONObject collegeData = result.getJSONObject(i);
                 id_array[i] = collegeData.getString("id");
-                crid[i] = collegeData.getString("crid");
+                paths[i] = collegeData.getString("image");
                 name[i] = collegeData.getString("name");
-                classroomid[i] = collegeData.getString("classroomid");
+                //classroomid[i] = collegeData.getString("classroomid");
                 //temp=temp+" "+id_array[i]+crid[0]+name[i]+classroomid[i];
             }
             loadlist(name);
@@ -124,10 +110,10 @@ public class tab2 extends Fragment {
     }
     private void loadlist(String[] names)
     {
-        ListView listView = (ListView) getView().findViewById(R.id.lstcategory);
+        ListView listView = (ListView)findViewById(R.id.lstcategory);
 
 
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, names);
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(actstudent_category_files.this, android.R.layout.simple_list_item_1, names);
         listView.setAdapter(itemsAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -136,19 +122,17 @@ public class tab2 extends Fragment {
                                     long id) {
 
                 String item = ((TextView) view).getText().toString();
-                String str="positoin="+position+"id="+id+"item="+item;
+                //String str="positoin="+position+"id="+id+"item="+item;
                 //Toast.makeText(getActivity(), str, Toast.LENGTH_LONG).show();
-                openedit(position);
+                download(position);
             }
         });
     }
-    void openedit(int itemid)
+    void download(int itemid)
     {
         String db_id=id_array[itemid];
         //System.out.println(db_id);
-        Intent in=new Intent(getActivity(),actstudent_category_files.class);
-        in.putExtra("db_id",db_id);
-        startActivity(in);
+        Toast.makeText(actstudent_category_files.this,"download image of id "+db_id,Toast.LENGTH_SHORT);
     }
 
 

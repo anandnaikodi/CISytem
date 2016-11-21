@@ -39,10 +39,10 @@ public class ma_pager_adapter extends FragmentPagerAdapter {
         Locale l = Locale.getDefault();
         switch (position) {
             case 0:
-                return "Top stories";
+                return "Announcements";
             case 1:
 
-                return "Members";
+                return "Downloads";
 
         }
         return null;
