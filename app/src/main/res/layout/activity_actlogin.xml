@@ -16,7 +16,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="131dp"
-        app:srcCompat="@drawable/cis"
+        app:srcCompat="@drawable/cc"
         android:id="@+id/imageView5"
         android:minHeight="82dp" />
 
