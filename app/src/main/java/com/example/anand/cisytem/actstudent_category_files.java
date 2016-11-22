@@ -132,7 +132,7 @@ public class actstudent_category_files extends AppCompatActivity {
     {
         String db_id=id_array[itemid];
         //System.out.println(db_id);
-        Toast.makeText(actstudent_category_files.this,"download image of id "+db_id,Toast.LENGTH_SHORT);
+        Toast.makeText(actstudent_category_files.this,"download image of id "+db_id,Toast.LENGTH_SHORT).show();
     }
 
 
