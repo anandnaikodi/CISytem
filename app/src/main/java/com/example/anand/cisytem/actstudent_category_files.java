@@ -1,5 +1,6 @@
 package com.example.anand.cisytem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -132,7 +133,10 @@ public class actstudent_category_files extends AppCompatActivity {
     {
         String db_id=id_array[itemid];
         //System.out.println(db_id);
-        Toast.makeText(actstudent_category_files.this,"download image of id "+db_id,Toast.LENGTH_SHORT).show();
+        Intent in = new Intent(this,actstudent_file_download.class);
+        in.putExtra("db_id",db_id);
+        startActivity(in);
+        //Toast.makeText(actstudent_category_files.this,"download image of id "+db_id,Toast.LENGTH_SHORT).show();
     }
 
 

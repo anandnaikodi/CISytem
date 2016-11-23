@@ -34,7 +34,8 @@
         <activity android:name=".actadmin_addannouncement" />
         <activity android:name=".actadmin_category_edit" />
         <activity android:name=".actstudent_profile" />
-        <activity android:name=".actstudent_category_files"></activity>
+        <activity android:name=".actstudent_category_files" />
+        <activity android:name=".actstudent_file_download"></activity>
     </application>
 
 </manifest>
