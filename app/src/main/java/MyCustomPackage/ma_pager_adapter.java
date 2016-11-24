@@ -1,8 +1,11 @@
-package com.example.anand.cisytem;
+package MyCustomPackage;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.anand.cisytem.tab1;
+import com.example.anand.cisytem.tab2;
 
 import java.util.Locale;
 

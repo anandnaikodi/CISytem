@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -22,8 +21,13 @@ import org.json.JSONObject;
 
 import java.net.URLEncoder;
 
+import MyCustomPackage.constants;
+
 public class actstudent_category_files extends AppCompatActivity {
     String[] id_array;
+    String[] paths;
+    //String[] classroomid;
+    String[] name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +47,7 @@ public class actstudent_category_files extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        String url=constants.url+"/CIS/fetchrow.php?q="+query;
+        String url= constants.url+"/CIS/fetchrow.php?q="+query;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,url ,
                 new Response.Listener<String>() {
@@ -78,9 +82,7 @@ public class actstudent_category_files extends AppCompatActivity {
         String temp="";
         System.out.println("inside makeJson");
 
-        String[] paths;
-        //String[] classroomid;
-        String[] name;
+
         try {
             System.out.println("inside makejason try");
 
@@ -122,7 +124,7 @@ public class actstudent_category_files extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
 
-                String item = ((TextView) view).getText().toString();
+                //String item = ((TextView) view).getText().toString();
                 //String str="positoin="+position+"id="+id+"item="+item;
                 //Toast.makeText(getActivity(), str, Toast.LENGTH_LONG).show();
                 download(position);
@@ -131,10 +133,14 @@ public class actstudent_category_files extends AppCompatActivity {
     }
     void download(int itemid)
     {
-        String db_id=id_array[itemid];
+        //String db_id=id_array[itemid];
         //System.out.println(db_id);
+        System.out.println("inside download");
+
+        System.out.println(name[itemid]+" "+paths[itemid]);
         Intent in = new Intent(this,actstudent_file_download.class);
-        in.putExtra("db_id",db_id);
+        in.putExtra("name",name[itemid]);
+        in.putExtra("url",paths[itemid]);
         startActivity(in);
         //Toast.makeText(actstudent_category_files.this,"download image of id "+db_id,Toast.LENGTH_SHORT).show();
     }

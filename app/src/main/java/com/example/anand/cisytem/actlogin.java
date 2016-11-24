@@ -21,6 +21,8 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+import MyCustomPackage.constants;
+
 public class actlogin extends AppCompatActivity implements View.OnClickListener{
     public static final String LOGIN_URL = constants.url+"/CIS/login.php";
 
@@ -60,14 +62,15 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
                     @Override
 
                     public void onResponse(String response) {
-                        if(response.trim().equals("success")){
-// TODO: 12-11-2016 get id from db and store it in constants 
-                            System.out.println("inside success");
-                            openProfile(table);
-                            System.out.println("inside success2");
-                        }else{
+                        if(response.trim().equals("failure")||response.trim().equals("error"))
+                        {
                             //loading.dismiss();
                             Toast.makeText(actlogin.this,response,Toast.LENGTH_LONG).show();
+                        }else{
+                            System.out.println("inside success");
+                            constants.id=Integer.parseInt(response.trim());
+                            openProfile(table);
+                            System.out.println("inside success2");
                         }
                     }
                 },
@@ -165,8 +168,8 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
     {
         // TODO: 12-11-2016 add proper redirect
         //Intent in= new Intent(this,MainActivity.class);
-        //Intent in= new Intent(this,actstudent_profile.class);
-        Intent in= new Intent(this,actadmin_profile.class);
+        Intent in= new Intent(this,actstudent_profile.class);
+        //Intent in= new Intent(this,actadmin_profile.class);
         //Intent in= new Intent(this,actsignup.class);
         startActivity(in);
         //bbaah

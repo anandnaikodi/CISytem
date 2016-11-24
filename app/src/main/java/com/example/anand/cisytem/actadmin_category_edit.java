@@ -13,6 +13,8 @@ import com.android.volley.toolbox.Volley;
 
 import java.net.URLEncoder;
 
+import MyCustomPackage.constants;
+
 public class actadmin_category_edit extends AppCompatActivity {
     String db_id;
 
@@ -43,7 +45,7 @@ public class actadmin_category_edit extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        String URL=constants.url+"/CIS/fetchrow.php?q="+query;
+        String URL= constants.url+"/CIS/fetchrow.php?q="+query;
         System.out.println(URL);
 
         //final String table=tablelocal;

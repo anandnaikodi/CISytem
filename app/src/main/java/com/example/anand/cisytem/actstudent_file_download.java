@@ -3,8 +3,8 @@ package com.example.anand.cisytem;
 import android.app.ProgressDialog;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,13 +19,14 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-
 public class actstudent_file_download extends AppCompatActivity {
     Button button;
     ImageView imageview;
+    String image_name;
+    String image_url;
+    String image_extension;
     //String image_url = "http://192.168.43.163:8080/CIS/uploads/1.png";
-    String image_url = "";
-    String image_name="";
+    //db_id=getIntent().getExtras().getString("db_id");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,11 @@ public class actstudent_file_download extends AppCompatActivity {
         setContentView(R.layout.activity_actstudent_file_download);
         button = (Button) findViewById(R.id.button);
         imageview = (ImageView) findViewById(R.id.image_view);
+
+        image_url = getIntent().getExtras().getString("url");
+        image_name=getIntent().getExtras().getString("name");
+        image_extension=image_url.substring(image_url.lastIndexOf("."));
+        //System.out.println(image_url+image_name+image_extension);
 
         button.setOnClickListener(new View.OnClickListener() {
 
@@ -72,7 +78,7 @@ public class actstudent_file_download extends AppCompatActivity {
                 URLConnection urlConnection = url.openConnection();
                 urlConnection.connect();
                 file_length=urlConnection.getContentLength();
-                File new_folder= new File("/storage/emulated/0/TempImages/");
+                File new_folder= new File("/storage/emulated/0/#Images/");
                 if(!new_folder.exists())
                 {
                     new_folder.mkdir();
@@ -80,7 +86,7 @@ public class actstudent_file_download extends AppCompatActivity {
                 }
                 System.out.println(new_folder);
                 // TODO: 22-11-2016 file name
-                File input_file= new File(new_folder,"download_image.png");
+                File input_file= new File(new_folder,image_name+""+image_extension);
                 InputStream inputStream = new BufferedInputStream(url.openStream(),8192);
                 byte[] data = new byte[1024];
                 int total =0;
@@ -120,7 +126,7 @@ public class actstudent_file_download extends AppCompatActivity {
             progressDialog.hide();
             Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
             // TODO: 22-11-2016 image name
-            String path="/storage/emulated/0/TempImages/download_image.png";
+            String path="/storage/emulated/0/#Images/"+image_name+""+image_extension;
             imageview.setImageDrawable(Drawable.createFromPath(path));
         }
     }

@@ -8,6 +8,8 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import MyCustomPackage.ma_pager_adapter;
+
 public class actstudent_profile extends FragmentActivity {
 
     ViewPager pager;

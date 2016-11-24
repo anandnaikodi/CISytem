@@ -25,6 +25,8 @@ import org.json.JSONObject;
 
 import java.net.URLEncoder;
 
+import MyCustomPackage.constants;
+
 /**
  * Created by anand on 03-11-2016.
  */
@@ -70,7 +72,7 @@ private void loaddata()
         e.printStackTrace();
     }
 
-    String url=constants.url+"/CIS/fetchrow.php?q="+query;
+    String url= constants.url+"/CIS/fetchrow.php?q="+query;
 
     StringRequest stringRequest = new StringRequest(Request.Method.GET,url ,
             new Response.Listener<String>() {

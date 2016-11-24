@@ -13,6 +13,8 @@ import com.android.volley.toolbox.Volley;
 
 import java.net.URLEncoder;
 
+import MyCustomPackage.constants;
+
 public class actadmin_addannouncement extends AppCompatActivity {
 
     @Override
@@ -35,7 +37,7 @@ public class actadmin_addannouncement extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        String url=constants.url+"/CIS/insert.php?q="+query;
+        String url= constants.url+"/CIS/insert.php?q="+query;
         System.out.println("inside registerUser");
 //        final String table=tablelocal;
 //        final String username = Textname.getText().toString().trim();

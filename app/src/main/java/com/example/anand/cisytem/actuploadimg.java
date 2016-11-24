@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
+import MyCustomPackage.constants;
+
 public class actuploadimg extends AppCompatActivity implements View.OnClickListener  {
 
     private Button buttonChoose;
@@ -40,7 +42,7 @@ public class actuploadimg extends AppCompatActivity implements View.OnClickListe
 
     private int PICK_IMAGE_REQUEST = 1;
 
-    private String UPLOAD_URL =constants.url+"/CIS/upload.php";
+    private String UPLOAD_URL = constants.url+"/CIS/upload.php";
 
     private String KEY_IMAGE = "image";
     private String KEY_NAME = "name";

@@ -26,6 +26,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import MyCustomPackage.constants;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextId;

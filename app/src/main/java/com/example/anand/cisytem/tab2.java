@@ -25,6 +25,8 @@ import org.json.JSONObject;
 
 import java.net.URLEncoder;
 
+import MyCustomPackage.constants;
+
 
 public class tab2 extends Fragment {
 
@@ -56,7 +58,7 @@ public class tab2 extends Fragment {
             e.printStackTrace();
         }
 
-        String url=constants.url+"/CIS/fetchrow.php?q="+query;
+        String url= constants.url+"/CIS/fetchrow.php?q="+query;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,url ,
                 new Response.Listener<String>() {

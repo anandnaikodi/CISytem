@@ -25,6 +25,7 @@ import java.util.List;
 
 import MyCustomPackage.CustomAdapter;
 import MyCustomPackage.RowItem;
+import MyCustomPackage.constants;
 
 /**
  * Created by anand on 03-11-2016.
@@ -80,7 +81,7 @@ public class actadmin_home extends Fragment {
             e.printStackTrace();
         }
 
-        String url=constants.url+"/CIS/fetchrow.php?q="+query;
+        String url= constants.url+"/CIS/fetchrow.php?q="+query;
         System.out.println(url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET,url ,
                 new Response.Listener<String>() {
