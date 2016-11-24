@@ -16,7 +16,8 @@
         android:text="add category"
         android:layout_width="198dp"
         android:layout_height="wrap_content"
-        android:id="@+id/btnaddcategory" />
+        android:id="@+id/btnaddcategory"
+        android:onClick="openadd"/>
 
     <ListView
         android:layout_width="match_parent"

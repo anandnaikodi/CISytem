@@ -2,6 +2,8 @@ package com.example.anand.cisytem;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -27,7 +29,8 @@ public class actadmin_addannouncement extends AppCompatActivity {
 
 
     private void send(){
-        String query="insert into announcements";
+        TextView message=(TextView)findViewById(R.id.txtannouncement);
+        String query="INSERT INTO announcements (crid, classroomid, data) VALUES ('"+constants.id+"','"+constants.classroom_id+"','"+message.getText()+"'";
         // TODO: 21-11-2016 query
         try{
             query= URLEncoder.encode(query,"UTF-8");
@@ -73,6 +76,11 @@ public class actadmin_addannouncement extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    void button_send(View v)
+    {
+        send();
     }
 
 }

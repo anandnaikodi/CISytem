@@ -166,6 +166,11 @@ private void loaddata()
         in.putExtra("db_id",db_id);
         startActivity(in);
     }
+    void openadd(View v)
+    {
+    Intent in=new Intent(getActivity(),actadmin_caregory_add.class);
+    }
+
 
 }
 

@@ -3,7 +3,8 @@
     package="com.example.anand.cisytem">
 
     <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -35,7 +36,8 @@
         <activity android:name=".actadmin_category_edit" />
         <activity android:name=".actstudent_profile" />
         <activity android:name=".actstudent_category_files" />
-        <activity android:name=".actstudent_file_download"></activity>
+        <activity android:name=".actstudent_file_download" />
+        <activity android:name=".actadmin_caregory_add"></activity>
     </application>
 
 </manifest>
