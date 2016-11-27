@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,7 @@ public class actadmin_category extends Fragment {
 
     String[] id_array;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,6 +61,19 @@ public class actadmin_category extends Fragment {
 
         getActivity().setTitle("List Category");
         loaddata();
+        Button add_category=(Button)getView().findViewById(R.id.btnaddcategory);
+        add_category.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(getActivity(),actadmin_caregory_add.class);
+                startActivity(in);
+
+
+
+            }
+        });
+
     }
 private void loaddata()
 {
@@ -166,10 +181,7 @@ private void loaddata()
         in.putExtra("db_id",db_id);
         startActivity(in);
     }
-    void openadd(View v)
-    {
-    Intent in=new Intent(getActivity(),actadmin_caregory_add.class);
-    }
+
 
 
 }

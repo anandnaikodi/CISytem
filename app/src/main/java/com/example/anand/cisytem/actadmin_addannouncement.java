@@ -30,8 +30,8 @@ public class actadmin_addannouncement extends AppCompatActivity {
 
     private void send(){
         TextView message=(TextView)findViewById(R.id.txtannouncement);
-        String query="INSERT INTO announcements (crid, classroomid, data) VALUES ('"+constants.id+"','"+constants.classroom_id+"','"+message.getText()+"'";
-        // TODO: 21-11-2016 query
+        String query="INSERT INTO announcement (crid, classroomid, data) VALUES ('"+constants.id+"','"+constants.classroom_id+"','"+message.getText()+"')";
+        // TODO: convert to post if possible
         try{
             query= URLEncoder.encode(query,"UTF-8");
         }
@@ -41,7 +41,7 @@ public class actadmin_addannouncement extends AppCompatActivity {
         }
 
         String url= constants.url+"/CIS/insert.php?q="+query;
-        System.out.println("inside registerUser");
+        System.out.println(url);
 //        final String table=tablelocal;
 //        final String username = Textname.getText().toString().trim();
 //        final String email = TextEmail.getText().toString().trim();

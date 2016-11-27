@@ -19,6 +19,9 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+
+import MyCustomPackage.constants;
+
 public class actstudent_file_download extends AppCompatActivity {
     Button button;
     ImageView imageview;
@@ -36,6 +39,7 @@ public class actstudent_file_download extends AppCompatActivity {
         imageview = (ImageView) findViewById(R.id.image_view);
 
         image_url = getIntent().getExtras().getString("url");
+        image_url= constants.url+"/CIS/uploads/"+image_url;
         image_name=getIntent().getExtras().getString("name");
         image_extension=image_url.substring(image_url.lastIndexOf("."));
         //System.out.println(image_url+image_name+image_extension);

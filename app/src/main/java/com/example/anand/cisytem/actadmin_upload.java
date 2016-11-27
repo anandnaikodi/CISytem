@@ -6,6 +6,25 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+
+import MyCustomPackage.constants;
 
 /**
  * Created by anand on 03-11-2016.
@@ -19,6 +38,8 @@ import android.view.ViewGroup;
 
 
 public class actadmin_upload extends Fragment {
+    String[] id_array;
+    String[] category_array;
 
     @Nullable
     @Override
@@ -35,4 +56,101 @@ public class actadmin_upload extends Fragment {
         //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle("upload");
     }
+
+
+    private void loaddata()
+    {
+// TODO: 12-11-2016 proper url with cr id
+        String query="select * from category";
+        try{
+            query= URLEncoder.encode(query,"UTF-8");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        String url= constants.url+"/CIS/fetchrow.php?q="+query;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,url ,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("inside response");
+                        makeJSON(response);
+                        System.out.println("coming out of response");
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        // loading.dismiss();
+                        // Toast.makeText(actlogin.this,volleyError.getMessage().toString(),Toast.LENGTH_LONG ).show();
+                        if(volleyError.getMessage()!=null) {
+                            Toast.makeText(getActivity(), volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(getActivity(), "server connection failed", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+    }
+
+    private void makeJSON(String response){
+        String temp="";
+        System.out.println("inside makeJson");
+
+//        String[] crid;
+//        String[] classroomid;
+        String[] name;
+        try {
+            System.out.println("inside makejason try");
+
+
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray result = jsonObject.getJSONArray("result");
+            int size=result.length();
+            id_array=new String[size];
+//            crid=new String[size];
+//            classroomid=new String[size];
+            name= new  String[size];
+
+
+            for(int i=0;i<result.length();i++) {
+                JSONObject collegeData = result.getJSONObject(i);
+                id_array[i] = collegeData.getString("id");
+                //crid[i] = collegeData.getString("crid");
+                name[i] = collegeData.getString("name");
+                //classroomid[i] = collegeData.getString("classroomid");
+                //temp=temp+" "+id_array[i]+crid[0]+name[i]+classroomid[i];
+            }
+            loadlist(name);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.print(temp);
+    }
+    void loadlist(String[] names)
+    {
+       Spinner spinner2 = (Spinner) getView().findViewById(R.id.selcategory);
+        List<String> list = new ArrayList<String>();
+        for(int i=0;i<names.length;i++)
+        {
+            list.add(names[i]);
+        }
+
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(dataAdapter);
+    }
+
+    //// TODO: 27-11-2016
 }
+
