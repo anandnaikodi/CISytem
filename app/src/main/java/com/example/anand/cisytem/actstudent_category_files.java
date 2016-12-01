@@ -26,6 +26,7 @@ import MyCustomPackage.constants;
 public class actstudent_category_files extends AppCompatActivity {
     String[] id_array;
     String[] paths;
+    String db_id;
     //String[] classroomid;
     String[] name;
     @Override
@@ -33,12 +34,13 @@ public class actstudent_category_files extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actstudent_category_files);
     loaddata();
+        db_id=this.getIntent().getExtras().getString("db_id");
     }
 
     private void loaddata()
     {
-// TODO: 12-11-2016 proper url with cr id
-        String query="select * from files";
+// TODO: 12-11-2016 proper url with cr id[done]
+        String query="select * from files where categoryid='"+db_id+"'";
         try{
             query= URLEncoder.encode(query,"UTF-8");
         }

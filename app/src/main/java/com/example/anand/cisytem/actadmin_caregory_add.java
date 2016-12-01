@@ -28,7 +28,7 @@ public class actadmin_caregory_add extends AppCompatActivity {
     private void send(){
         TextView cat_name=(TextView)findViewById(R.id.txtcatadd);
         String query="INSERT INTO category (crid, classroomid, name) VALUES ('"+ constants.id+"','"+constants.classroom_id+"','"+cat_name.getText()+"')";
-        // TODO: convert to post if possible
+        // TODO: convert to post if possible[invalid]
         try{
             query= URLEncoder.encode(query,"UTF-8");
         }

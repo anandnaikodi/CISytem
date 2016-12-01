@@ -108,6 +108,8 @@ public class actuploadimg extends AppCompatActivity implements View.OnClickListe
                 //Adding parameters
                 params.put(KEY_IMAGE, image);
                 params.put(KEY_NAME, name);
+                params.put("crid", ""+constants.id);
+
 
                 //returning parameters
                 return params;

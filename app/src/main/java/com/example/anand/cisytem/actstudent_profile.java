@@ -7,7 +7,18 @@ import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.net.URLEncoder;
+
+import MyCustomPackage.constants;
 import MyCustomPackage.ma_pager_adapter;
 
 public class actstudent_profile extends FragmentActivity {
@@ -27,6 +38,7 @@ public class actstudent_profile extends FragmentActivity {
         tab_strp.setTextColor(Color.WHITE);
         //   tab_strp.setTextSize(14,14);
         // tab_strp.setTabIndicatorColor(Color.WHITE);
+        check();
     }
 
     @Override
@@ -49,6 +61,49 @@ public class actstudent_profile extends FragmentActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    void check()
+    {
+
+        String query="select classroomid from class where studentid ='"+ constants.id+"'";
+        try{
+            query= URLEncoder.encode(query,"UTF-8");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        String url= constants.url+"/CIS/fetchdata.php?q="+query;
+        System.out.println(url);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,url ,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("inside response");
+                        constants.classroom_id=Integer.parseInt(response.trim());
+                        //System.out.print(response);
+                        System.out.println("coming out of response");
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        // loading.dismiss();
+                        // Toast.makeText(actlogin.this,volleyError.getMessage().toString(),Toast.LENGTH_LONG ).show();
+                        if(volleyError.getMessage()!=null) {
+                            Toast.makeText(actstudent_profile.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(actstudent_profile.this, "server connection failed", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
 

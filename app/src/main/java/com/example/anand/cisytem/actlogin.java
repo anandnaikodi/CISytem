@@ -103,6 +103,7 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
     public void openProfile(String tablelocal){
         final String table2=tablelocal;
         if(table2.equals("classrepresentative")) {
+            constants.classroom_id=constants.id;
             Intent inn = new Intent(this, actadmin_profile.class);
             System.out.println("inside success22");
             inn.putExtra(KEY_EMAIL, username);
@@ -113,7 +114,8 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
         }
         else
         {
-            Intent inn2 = new Intent(this, actstudent_profile.class);
+            //Intent inn2 = new Intent(this, actstudent_profile.class);
+            Intent inn2 = new Intent(this, actstudent_add_class.class);
             System.out.println("inside success22");
             inn2.putExtra(KEY_EMAIL, username);
             System.out.println(username);

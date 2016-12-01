@@ -48,8 +48,8 @@ public class tab2 extends Fragment {
     }
     private void loaddata()
     {
-// TODO: 12-11-2016 proper url with cr id
-        String query="select * from category";
+// TODO: 12-11-2016 proper url with cr id[done]
+        String query="select * from category where classroomid='"+constants.classroom_id+"'";
         try{
             query= URLEncoder.encode(query,"UTF-8");
         }

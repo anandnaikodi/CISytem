@@ -48,7 +48,7 @@ public class actstudent_file_download extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+                // TODO Auto-generated method stub[done]
 
                 DownloadTask downloadTask= new DownloadTask();
                 downloadTask.execute(image_url);
