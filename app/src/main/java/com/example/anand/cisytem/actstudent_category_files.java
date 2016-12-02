@@ -26,21 +26,25 @@ import MyCustomPackage.constants;
 public class actstudent_category_files extends AppCompatActivity {
     String[] id_array;
     String[] paths;
-    String db_id;
+    String cat_id;
     //String[] classroomid;
     String[] name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actstudent_category_files);
+
+        Bundle extras = getIntent().getExtras();
+        cat_id =extras.getString("cat_id1");
     loaddata();
-        db_id=this.getIntent().getExtras().getString("db_id");
+        //cat_id=this.getIntent().getExtras().getString("cat_id");
+
     }
 
     private void loaddata()
     {
 // TODO: 12-11-2016 proper url with cr id[done]
-        String query="select * from files where categoryid='"+db_id+"'";
+        String query="select * from files where categoryid='"+ cat_id +"'";
         try{
             query= URLEncoder.encode(query,"UTF-8");
         }
@@ -50,7 +54,7 @@ public class actstudent_category_files extends AppCompatActivity {
         }
 
         String url= constants.url+"/CIS/fetchrow.php?q="+query;
-
+        System.out.println(url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET,url ,
                 new Response.Listener<String>() {
                     @Override
@@ -135,8 +139,8 @@ public class actstudent_category_files extends AppCompatActivity {
     }
     void download(int itemid)
     {
-        //String db_id=id_array[itemid];
-        //System.out.println(db_id);
+        //String cat_id=id_array[itemid];
+        //System.out.println(cat_id);
         System.out.println("inside download");
 
         System.out.println(name[itemid]+" "+paths[itemid]);
@@ -144,7 +148,7 @@ public class actstudent_category_files extends AppCompatActivity {
         in.putExtra("name",name[itemid]);
         in.putExtra("url",paths[itemid]);
         startActivity(in);
-        //Toast.makeText(actstudent_category_files.this,"download image of id "+db_id,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(actstudent_category_files.this,"download image of id "+cat_id,Toast.LENGTH_SHORT).show();
     }
 
 

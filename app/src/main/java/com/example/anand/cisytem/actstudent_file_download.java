@@ -29,7 +29,7 @@ public class actstudent_file_download extends AppCompatActivity {
     String image_url;
     String image_extension;
     //String image_url = "http://192.168.43.163:8080/CIS/uploads/1.png";
-    //db_id=getIntent().getExtras().getString("db_id");
+    //cat_id=getIntent().getExtras().getString("cat_id");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

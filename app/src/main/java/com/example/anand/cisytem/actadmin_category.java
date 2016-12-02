@@ -176,9 +176,9 @@ private void loaddata()
      void openedit(int itemid)
     {
         String db_id=id_array[itemid];
-        //System.out.println(db_id);
+        //System.out.println(cat_id);
         Intent in=new Intent(getActivity(),actadmin_category_edit.class);
-        in.putExtra("db_id",db_id);
+        in.putExtra("cat_id",db_id);
         startActivity(in);
     }
 

@@ -26,8 +26,8 @@ public class actadmin_category_edit extends AppCompatActivity {
         //textView.setText(getIntent().getExtras().getString("itemid"));
         //String data = getIntent().getExtras().getString("itemid").toString();
 
-        //Toast.makeText(this,db_id=getIntent().getExtras().getString("db_id"),Toast.LENGTH_LONG).show();
-        db_id=getIntent().getExtras().getString("db_id");
+        //Toast.makeText(this,cat_id=getIntent().getExtras().getString("cat_id"),Toast.LENGTH_LONG).show();
+        db_id=getIntent().getExtras().getString("cat_id");
         TextView name=(TextView) findViewById(R.id.txtname);
         name.setText(db_id);
         loaddata();
@@ -35,7 +35,7 @@ public class actadmin_category_edit extends AppCompatActivity {
 
 
     private void loaddata() {
-        // TODO: 12-11-2016 proper url with cr id[done]
+        // TODO: 12-11-2016 load txt box with proper id name, code update button
         String query="select * from category where id="+db_id;
         try{
             query= URLEncoder.encode(query,"UTF-8");
