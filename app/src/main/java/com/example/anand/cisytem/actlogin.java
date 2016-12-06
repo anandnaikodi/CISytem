@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -22,6 +20,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import MyCustomPackage.constants;
+import customfonts.MyEditText;
+import customfonts.MyTextView;
 
 public class actlogin extends AppCompatActivity implements View.OnClickListener{
     public static final String LOGIN_URL = constants.url+"/CIS/login.php";
@@ -30,10 +30,10 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
     public static final String KEY_PASSWORD="password";
     public static final String KEY_TABLE = "table";
 
-    private EditText TextUsername;
-    private EditText TextPassword;
+    private MyEditText  TextUsername;
+    private MyEditText  TextPassword;
     private CheckBox TextCheckbox;
-    private Button buttonLogin;
+    private MyTextView buttonLogin;
 
     private String username;
     private String password;
@@ -43,11 +43,11 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actlogin);
-        TextUsername = (EditText) findViewById(R.id.txt_email);
-        TextPassword = (EditText) findViewById(R.id.txt_password);
+        TextUsername = (MyEditText) findViewById(R.id.txt_email);
+        TextPassword = (MyEditText ) findViewById(R.id.txt_password);
         TextCheckbox=(CheckBox) findViewById(R.id.chk_admin);
 
-        buttonLogin = (Button) findViewById(R.id.btn_login);
+        buttonLogin = (MyTextView) findViewById(R.id.btn_login);
         TextCheckbox.setOnClickListener(this);
         buttonLogin.setOnClickListener(this);
 
@@ -168,7 +168,7 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
     {
         // TODO: 12-11-2016 add proper redirect
         //Intent in= new Intent(this,MainActivity.class);
-        Intent in= new Intent(this,actuploadimg.class);
+        Intent in= new Intent(this,actsignup.class);
         //Intent in= new Intent(this,actstudent_profile.class);
         //Intent in= new Intent(this,actadmin_profile.class);
         //Intent in= new Intent(this,actsignup.class);

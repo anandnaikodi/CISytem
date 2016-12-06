@@ -11,14 +11,15 @@
         android:label="CISystem"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".actlogin"
             android:theme="@style/AppTheme.Dark">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".actsignup"
@@ -27,11 +28,20 @@
             android:name=".actprofile"
             android:theme="@style/AppTheme.Dark" />
         <activity android:name=".actuploadimg" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" android:theme="@style/AppTheme.NoActionBar" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".actadmin_profile"
             android:label="@string/title_activity_actadminprofile"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".signin" />
+        <activity android:name=".signup" />
         <activity android:name=".actadmin_addannouncement" />
         <activity android:name=".actadmin_category_edit" />
         <activity android:name=".actstudent_profile" />

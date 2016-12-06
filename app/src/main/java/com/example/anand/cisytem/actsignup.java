@@ -1,12 +1,11 @@
 package com.example.anand.cisytem;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,6 +20,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import MyCustomPackage.constants;
+import customfonts.MyEditText;
+import customfonts.MyTextView;
 
 
 public class actsignup extends AppCompatActivity  implements View.OnClickListener{
@@ -31,12 +32,12 @@ public class actsignup extends AppCompatActivity  implements View.OnClickListene
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_TABLE = "table";
 
-    private EditText Textname;
-    private EditText TextEmail;
-    private EditText TextconPassword;
-    private EditText TextPassword;
+    private MyEditText  Textname;
+    private MyEditText TextEmail;
+    private MyEditText TextconPassword;
+    private MyEditText TextPassword;
     private Spinner seluser;
-    private Button buttonSubmit;
+    private MyTextView buttonSubmit;
 
 
 
@@ -44,13 +45,13 @@ public class actsignup extends AppCompatActivity  implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actsignup);
-        Textname = (EditText) findViewById(R.id.txt_name);
-        TextEmail = (EditText) findViewById(R.id.txt_email);
-        TextPassword = (EditText) findViewById(R.id.txt_password);
-        TextconPassword = (EditText) findViewById(R.id.txt_repassword);
+        Textname = (MyEditText) findViewById(R.id.txt_name);
+        TextEmail = (MyEditText) findViewById(R.id.txt_email);
+        TextPassword = (MyEditText) findViewById(R.id.txt_password);
+        TextconPassword = (MyEditText) findViewById(R.id.txt_repassword);
         seluser=(Spinner)findViewById(R.id.spinner);
 
-        buttonSubmit = (Button) findViewById(R.id.btn_submit);
+        buttonSubmit = (MyTextView) findViewById(R.id.btn_submit);
 
         buttonSubmit.setOnClickListener(this);
     }
@@ -148,4 +149,16 @@ public class actsignup extends AppCompatActivity  implements View.OnClickListene
             }
         }
     }
+    public void opensignin(View v)
+    {
+        // TODO: 12-11-2016 add proper redirect
+        //Intent in= new Intent(this,MainActivity.class);
+        Intent in= new Intent(this,actlogin.class);
+        //Intent in= new Intent(this,actstudent_profile.class);
+        //Intent in= new Intent(this,actadmin_profile.class);
+        //Intent in= new Intent(this,actsignup.class);
+        startActivity(in);
+        //bbaah
+    }
+
 }

@@ -5,7 +5,4 @@
         android:title="share"
         android:showAsAction="ifRoom"
         />
-
-
-
 </menu>
