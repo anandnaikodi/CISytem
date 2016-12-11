@@ -57,12 +57,13 @@ android:background="#fff">
             android:layout_height="wrap_content"
 
             android:id="@+id/spinner"
-
             android:textColor="@color/colortext"
             android:layout_marginLeft="46dp"
             android:layout_marginRight="46dp"
             android:entries="@array/users_arrays"
-            android:layout_above="@+id/linear" />
+            android:layout_above="@+id/linear"
+            android:spinnerMode="dialog"
+            android:background="@color/monsoon" />
 
         <View
             android:layout_width="match_parent"
@@ -80,7 +81,7 @@ android:background="#fff">
             android:hint="Name"
             android:layout_marginLeft="46dp"
 
-            android:textColorHint="@color/colorhint"
+            android:textColorHint="@color/monsoon"
             android:textColor="@color/colortext"
             android:background="#0000"
             android:padding="14dp"
@@ -101,7 +102,7 @@ android:background="#fff">
             android:layout_height="wrap_content"
             android:hint="Email"
             android:layout_marginLeft="46dp"
-            android:textColorHint="@color/colorhint"
+            android:textColorHint="@color/monsoon"
             android:textColor="@color/colortext"
             android:background="#0000"
             android:padding="15dp"
@@ -124,7 +125,7 @@ android:background="#fff">
             android:layout_marginLeft="46dp"
 
             android:drawableRight="@drawable/eye"
-            android:textColorHint="@color/colorhint"
+            android:textColorHint="@color/monsoon"
             android:textColor="@color/colortext"
             android:background="#0000"
             android:padding="15dp"
@@ -152,13 +153,12 @@ android:background="#fff">
             android:layout_marginLeft="46dp"
             android:layout_marginRight="46dp"
             android:drawableRight="@drawable/eye"
-            android:textColorHint="@color/colorhint"
+            android:textColorHint="@color/monsoon"
             android:textColor="@color/colortext"
             android:background="#0000"
             android:padding="15dp"
             android:gravity="left"
-            android:inputType="textPassword"
-            />
+            android:inputType="textPassword" />
         <View
             android:layout_width="match_parent"
             android:layout_marginLeft="56dp"
