@@ -71,8 +71,8 @@ public class actadmin_home extends Fragment {
 
     private void loaddata()
     {
-// TODO: 12-11-2016 proper url with cr id
-        String query="select * from announcement";
+// TODO: 12-11-2016 proper url with cr id[done]
+        String query="select * from announcement where crid='"+constants.id+"'";
         try{
             query= URLEncoder.encode(query,"UTF-8");
         }

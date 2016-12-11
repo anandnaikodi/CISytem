@@ -48,8 +48,8 @@ public class tab2 extends Fragment {
     }
     private void loaddata()
     {
-// TODO: 12-11-2016 proper url with cr id
-        String query="select * from category";
+// TODO: 12-11-2016 proper url with cr id[done]
+        String query="select * from category where classroomid='"+constants.classroom_id+"'";
         try{
             query= URLEncoder.encode(query,"UTF-8");
         }
@@ -147,9 +147,12 @@ public class tab2 extends Fragment {
     void openedit(int itemid)
     {
         String db_id=id_array[itemid];
-        //System.out.println(db_id);
+        //System.out.println(cat_id);
+//        Intent in=new Intent(getActivity(),actadmin_category_edit.class);
+//        in.putExtra("cat_id",db_id);
+//        startActivity(in);
         Intent in=new Intent(getActivity(),actstudent_category_files.class);
-        in.putExtra("db_id",db_id);
+        in.putExtra("cat_id1",db_id);
         startActivity(in);
     }
 
