@@ -72,7 +72,7 @@ public class actadmin_home extends Fragment {
     private void loaddata()
     {
 // TODO: 12-11-2016 proper url with cr id[done]
-        String query="select * from announcement where crid='"+constants.id+"'";
+        String query="select * from announcement where crid='"+constants.id+"' order by id DESC";
         try{
             query= URLEncoder.encode(query,"UTF-8");
         }

@@ -76,7 +76,7 @@
             android:layout_height="match_parent"
             android:text="Get connected with"
             android:lines="1"
-            android:textColor="@color/colorhint"
+            android:textColor="@color/jet"
             android:gravity="center"
 
             />
@@ -88,7 +88,7 @@
             android:gravity="center"
             android:lines="2"
             android:paddingBottom="21dp"
-            android:textColor="@color/colorhint"
+            android:textColor="@color/jet"
 
             />
 

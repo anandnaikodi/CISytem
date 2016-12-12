@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/d"
     tools:context="com.example.anand.cisytem.actadmin_caregory_add">
 
     <EditText
@@ -15,20 +16,19 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
+        android:layout_marginTop="20dp"
+        android:id="@+id/txtcatadd"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="44dp"
-        android:id="@+id/txtcatadd" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/accent" />
 
     <Button
         android:text="add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtcatadd"
-        android:layout_alignEnd="@+id/txtcatadd"
-        android:layout_marginEnd="44dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="25dp"
         android:onClick="button_send"
-        android:id="@+id/btnadd" />
+        android:id="@+id/btnadd"
+        android:layout_below="@+id/txtcatadd"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -9,7 +9,7 @@
     <color name="accent">#ffffff</color>
 
     <color name="black">#000000</color>
-    <color name="jet">#222222</color>
+    <color name="jet">#e50f0f</color>
     <color name="oil">#333333</color>
     <color name="monsoon">#777777</color>
     <color name="jumbo">#d6d4d4</color>
@@ -18,7 +18,7 @@
     <color name="iron">#f9efef</color>
     <color name="white">#FFFFFF</color>
 
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#d3d9fb</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#ff4081</color>
     <color name="colortext">#100b20</color>

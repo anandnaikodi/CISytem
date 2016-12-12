@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center">
 
     <TextView
         android:layout_width="wrap_content"
@@ -10,18 +12,23 @@
         android:text="List Category"
         android:id="@+id/textView"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/accent" />
 
     <Button
         android:text="add category"
         android:layout_width="198dp"
         android:layout_height="wrap_content"
         android:id="@+id/btnaddcategory"
-        android:onClick="openadd"/>
+        android:onClick="openadd"
+        />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lstcategory" />
+        android:id="@+id/lstcategory"
+        android:divider="@color/jet"
+        android:dividerHeight="1dp"
+        android:textSize="15dp" />
 
 </LinearLayout>
