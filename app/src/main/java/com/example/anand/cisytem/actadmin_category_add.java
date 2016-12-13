@@ -17,12 +17,12 @@ import java.net.URLEncoder;
 
 import MyCustomPackage.constants;
 
-public class actadmin_caregory_add extends AppCompatActivity {
+public class actadmin_category_add extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_actadmin_caregory_add);
+        setContentView(R.layout.activity_actadmin_category_add);
     }
 
     private void send(){
@@ -49,7 +49,7 @@ public class actadmin_caregory_add extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         //loading.dismiss();
-                        Toast.makeText(actadmin_caregory_add.this,response,Toast.LENGTH_LONG).show();
+                        Toast.makeText(actadmin_category_add.this,response,Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -57,11 +57,11 @@ public class actadmin_caregory_add extends AppCompatActivity {
                     public void onErrorResponse(VolleyError volleyError) {
                         //loading.dismiss();
                         if(volleyError.getMessage()!=null) {
-                            Toast.makeText(actadmin_caregory_add.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(actadmin_category_add.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
                         }
                         else
                         {
-                            Toast.makeText(actadmin_caregory_add.this, "server connection failed", Toast.LENGTH_LONG).show();
+                            Toast.makeText(actadmin_category_add.this, "server connection failed", Toast.LENGTH_LONG).show();
                         }
                         //Toast.makeText(actadmin_addannouncement.this, volleyError.getMessage().toString(),Toast.LENGTH_LONG).show();
                     }

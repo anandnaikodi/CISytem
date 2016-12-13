@@ -33,11 +33,13 @@
         android:text="Update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnupdate" />
+        android:id="@+id/btnupdate"
+        android:onClick="bt_update"/>
 
     <Button
         android:text="delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btndelete" />
+        android:id="@+id/btndelete"
+        android:onClick="bt_delete"/>
 </LinearLayout>

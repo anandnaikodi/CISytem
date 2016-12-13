@@ -68,7 +68,7 @@ public class actadmin_category extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent in=new Intent(getActivity(),actadmin_caregory_add.class);
+                Intent in=new Intent(getActivity(),actadmin_category_add.class);
                 startActivity(in);
 
 
