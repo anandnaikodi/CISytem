@@ -69,6 +69,9 @@ public class actsignup extends AppCompatActivity  implements View.OnClickListene
                     public void onResponse(String response) {
                         loading.dismiss();
                         Toast.makeText(actsignup.this,response,Toast.LENGTH_LONG).show();
+                        Intent inn = new Intent(actsignup.this, actlogin.class);
+                        startActivity(inn);
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -88,7 +91,6 @@ public class actsignup extends AppCompatActivity  implements View.OnClickListene
                 params.put(KEY_TABLE, table);
                 return params;
             }
-
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -134,6 +136,7 @@ public class actsignup extends AppCompatActivity  implements View.OnClickListene
                 else
                 {
                     registerUser("classrepresentative");
+
                 }
 
             } else if (testing.equals("Student")) {

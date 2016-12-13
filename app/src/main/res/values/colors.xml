@@ -19,8 +19,8 @@
     <color name="white">#FFFFFF</color>
 
     <color name="colorPrimary">#d3d9fb</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#ff4081</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorAccent">#feb1cb</color>
     <color name="colortext">#100b20</color>
-    <color name="colorhint">#e4e5e7</color>
+    <color name="colorhint">#7d91b8</color>
 </resources>

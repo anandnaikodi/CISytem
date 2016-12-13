@@ -7,6 +7,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@drawable/d"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.anand.cisytem.actstudent_add_class">
 
@@ -15,21 +16,21 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="134dp"
         android:id="@+id/txt_classroomid"
-        android:hint="class room id" />
+        android:hint="class room id"
+        android:textColorHint="@color/accent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp"
+        android:textColor="@color/accent" />
 
     <Button
         android:text="join"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_classroomid"
-        android:layout_alignStart="@+id/txt_classroomid"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="42dp"
         android:id="@+id/btnclassroomid"
-        android:onClick="join_class"/>
+        android:onClick="join_class"
+        android:layout_below="@+id/txt_classroomid"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

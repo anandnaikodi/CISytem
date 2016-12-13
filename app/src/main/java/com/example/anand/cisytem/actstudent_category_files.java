@@ -1,12 +1,16 @@
 package com.example.anand.cisytem;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -122,7 +126,21 @@ public class actstudent_category_files extends AppCompatActivity {
         ListView listView = (ListView)findViewById(R.id.lstcategory);
 
 
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(actstudent_category_files.this, android.R.layout.simple_list_item_1, names);
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(actstudent_category_files.this, android.R.layout.simple_list_item_1, names){
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+
+                View view = super.getView(position, convertView, parent);
+                TextView text = (TextView) view.findViewById(android.R.id.text1);
+
+                text.setTextColor(Color.WHITE);
+                text.setTypeface(null, Typeface.BOLD);
+
+
+                return view;
+            }
+        };
         listView.setAdapter(itemsAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
