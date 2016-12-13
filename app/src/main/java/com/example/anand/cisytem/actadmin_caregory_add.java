@@ -1,7 +1,7 @@
 package com.example.anand.cisytem;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,7 +49,9 @@ public class actadmin_caregory_add extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         //loading.dismiss();
-                        Toast.makeText(actadmin_caregory_add.this,response,Toast.LENGTH_LONG).show();
+                        Toast.makeText(actadmin_caregory_add.this,"Sucessfully Created",Toast.LENGTH_LONG).show();
+                        //Intent inn = new Intent(actadmin_caregory_add.this, actadmin_category.class);
+                        //startActivity(inn);
                     }
                 },
                 new Response.ErrorListener() {

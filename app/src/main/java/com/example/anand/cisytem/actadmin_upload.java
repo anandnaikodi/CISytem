@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -18,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -203,7 +206,21 @@ public class actadmin_upload extends Fragment {
         }
 
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list){
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+
+                View view = super.getView(position, convertView, parent);
+                TextView text = (TextView) view.findViewById(android.R.id.text1);
+
+                text.setTextColor(Color.WHITE);
+                text.setTypeface(null, Typeface.BOLD);
+
+
+                return view;
+            }
+        };
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(dataAdapter);
     }

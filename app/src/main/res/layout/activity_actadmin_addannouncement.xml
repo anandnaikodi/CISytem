@@ -29,6 +29,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnsend"
-        android:layout_weight="0.06"
+        android:layout_weight="0.01"
         android:onClick="button_send"/>
 </LinearLayout>
