@@ -130,7 +130,14 @@ public class actadmin_category_edit extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         //loading.dismiss();
-                        Toast.makeText(actadmin_category_edit.this,response,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(actadmin_category_edit.this,response,Toast.LENGTH_LONG).show();
+                        if(response.equals("1")) {
+                            Toast.makeText(actadmin_category_edit.this, "success", Toast.LENGTH_LONG).show();
+                            actadmin_category_edit.super.onBackPressed();
+                        }
+                        else {
+                            Toast.makeText(actadmin_category_edit.this, "error occurred", Toast.LENGTH_LONG).show();
+                        }
                     }
                 },
                 new Response.ErrorListener() {

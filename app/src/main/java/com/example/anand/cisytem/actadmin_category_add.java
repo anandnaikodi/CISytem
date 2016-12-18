@@ -49,7 +49,13 @@ public class actadmin_category_add extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         //loading.dismiss();
-                        Toast.makeText(actadmin_category_add.this,response,Toast.LENGTH_LONG).show();
+                        if(response.equals("1")) {
+                            Toast.makeText(actadmin_category_add.this, "success", Toast.LENGTH_LONG).show();
+                            actadmin_category_add.super.onBackPressed();
+                        }
+                        else {
+                            Toast.makeText(actadmin_category_add.this, "error adding", Toast.LENGTH_LONG).show();
+                        }
                     }
                 },
                 new Response.ErrorListener() {

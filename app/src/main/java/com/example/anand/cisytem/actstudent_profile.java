@@ -1,5 +1,7 @@
 package com.example.anand.cisytem;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -106,6 +108,32 @@ public class actstudent_profile extends FragmentActivity {
         requestQueue.add(stringRequest);
     }
 
+    @Override
+    public void onBackPressed() {
+            confirmDialog();
+        }
+
+
+    private void confirmDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder
+                .setMessage("Are you sure want to logout?")
+                .setPositiveButton("Yes",  new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Yes-code
+                        actstudent_profile.super.onBackPressed();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
+    }
 
 }
 

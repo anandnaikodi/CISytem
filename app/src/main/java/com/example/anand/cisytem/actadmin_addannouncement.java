@@ -52,7 +52,14 @@ public class actadmin_addannouncement extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         //loading.dismiss();
-                        Toast.makeText(actadmin_addannouncement.this,response,Toast.LENGTH_LONG).show();
+                        if(response.equals("1")) {
+                            Toast.makeText(actadmin_addannouncement.this, "sent success", Toast.LENGTH_LONG).show();
+                            actadmin_addannouncement.super.onBackPressed();
+                        }
+                        else {
+                            Toast.makeText(actadmin_addannouncement.this, "error adding", Toast.LENGTH_LONG).show();
+                        }
+                        //Toast.makeText(actadmin_addannouncement.this,response,Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {

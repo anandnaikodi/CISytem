@@ -99,7 +99,12 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-
+void clearfields()
+{
+    TextUsername.setText("");
+    TextPassword.setText("");
+    TextCheckbox.setChecked(false);
+}
     public void openProfile(String tablelocal){
         final String table2=tablelocal;
         if(table2.equals("classrepresentative")) {
@@ -109,6 +114,7 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
             inn.putExtra(KEY_EMAIL, username);
             System.out.println(username);
             System.out.println("inside success222");
+            clearfields();
             startActivity(inn);
             System.out.println("inside success2223");
         }
@@ -120,6 +126,7 @@ public class actlogin extends AppCompatActivity implements View.OnClickListener{
             inn2.putExtra(KEY_EMAIL, username);
             System.out.println(username);
             System.out.println("inside success222");
+            clearfields();
             startActivity(inn2);
             System.out.println("inside success2223");
         }
