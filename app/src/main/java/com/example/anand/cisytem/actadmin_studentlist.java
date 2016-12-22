@@ -1,11 +1,15 @@
 package com.example.anand.cisytem;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,23 +25,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
 
-import MyCustomPackage.CustomAdapter;
-import MyCustomPackage.RowItem;
 import MyCustomPackage.constants;
 
-public class actadmin_home extends Fragment {
+
+public class actadmin_studentlist extends Fragment {
     String[] id_array;
-
-    ////    String[] member_names;
-////    TypedArray profile_pics;
-    String[] status;
-    String[] contactType;
-
-    List<RowItem> rowItems;
-    ListView mylistview;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,28 +39,20 @@ public class actadmin_home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.activity_adminfrag_home, container, false);
-
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.activity_adminfrag_studentlist, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
         super.onViewCreated(view, savedInstanceState);
         loaddata();
-        addclassid();
     }
 
-    private void addclassid()
-    {
-        TextView classid=(TextView)getView().findViewById(R.id.txtclassid);
-        classid.setText("Class Room id = "+constants.classroom_id);
-    }
     private void loaddata()
     {
-// TODO: 12-11-2016 proper url with cr id[done]
-        String query="select * from announcement where crid='"+ constants.id+"' order by id DESC limit 3";
+// TODO: 12-11-2016 proper url with cr id [done]
+        String query="SELECT * FROM `student` WHERE id IN (SELECT studentid FROM class WHERE classroomid = '"+constants.classroom_id+"') order by name ASC";
         try{
             query= URLEncoder.encode(query,"UTF-8");
         }
@@ -77,14 +62,14 @@ public class actadmin_home extends Fragment {
         }
 
         String url= constants.url+"/CIS/fetchrow.php?q="+query;
-        System.out.println(url);
+System.out.println(url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET,url ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         System.out.println("inside response");
                         makeJSON(response);
-                        System.out.println("coming out of response"+response);
+                        System.out.println("coming out of response");
 
                     }
                 },
@@ -107,14 +92,13 @@ public class actadmin_home extends Fragment {
         requestQueue.add(stringRequest);
     }
 
-    private void makeJSON(String response)
-    {
+    private void makeJSON(String response){
         String temp="";
         System.out.println("inside makeJson");
 
-        String[] data;
-        String[] time;
-        //String[] name;
+        String[] crid;
+        String[] classroomid;
+        String[] name;
         try {
             System.out.println("inside makejason try");
 
@@ -123,61 +107,61 @@ public class actadmin_home extends Fragment {
             JSONArray result = jsonObject.getJSONArray("result");
             int size=result.length();
             id_array=new String[size];
-            status=new String[size];
-            contactType = new String[size];
-//            crid=new String[size];
-//            classroomid=new String[size];
-//            name= new  String[size];
+            crid=new String[size];
+            classroomid=new String[size];
+            name= new  String[size];
 
 
             for(int i=0;i<result.length();i++) {
                 JSONObject collegeData = result.getJSONObject(i);
                 id_array[i] = collegeData.getString("id");
-                status[i] = collegeData.getString("data");
-                contactType[i] = collegeData.getString("time");
+                //crid[i] = collegeData.getString("crid");
+                name[i] = collegeData.getString("name");
                 //classroomid[i] = collegeData.getString("classroomid");
                 //temp=temp+" "+id_array[i]+crid[0]+name[i]+classroomid[i];
             }
-            //loadlist(name);
+            loadlist(name);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         System.out.print(temp);
-
-        start_adapter();
     }
-    private void start_adapter()
+    private void loadlist(String[] names)
     {
-        rowItems = new ArrayList<RowItem>();
+        ListView listView = (ListView) getView().findViewById(R.id.lststudents);
 
-//        member_names = getResources().getStringArray(R.array.Member_names);
 
-//        profile_pics = getResources().obtainTypedArray(R.array.profile_pics);
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, names){
 
-//        status = getResources().getStringArray(R.array.statues);
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
 
-//        contactType = getResources().getStringArray(R.array.contactType);
+                View view = super.getView(position, convertView, parent);
+                TextView text = (TextView) view.findViewById(android.R.id.text1);
 
-//        member_names = getResources().getStringArray(R.array.Member_names);
-//
-//        profile_pics = getResources().obtainTypedArray(R.array.profile_pics);
-//
-//        statues = getResources().getStringArray(R.array.statues);
-//
-//        contactType = getResources().getStringArray(R.array.contactType);
+                text.setTextColor(Color.WHITE);
+                text.setTypeface(null, Typeface.BOLD);
 
-        for (int i = 0; i < status.length; i++) {
-            RowItem item = new RowItem( status[i],
-                    contactType[i]);
-            rowItems.add(item);
-        }
 
-        mylistview = (ListView) getView().findViewById(R.id.list);
-        CustomAdapter adapter = new CustomAdapter(getActivity(), rowItems);
-        mylistview.setAdapter(adapter);
+                return view;
+            }
+        };
 
-        //mylistview.setOnItemClickListener(this);
+        listView.setAdapter(itemsAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+
+                String item = ((TextView) view).getText().toString();
+                String str="positoin="+position+"id="+id+"item="+item;
+                //Toast.makeText(getActivity(), str, Toast.LENGTH_LONG).show();
+               // openedit(position);
+            }
+        });
+
     }
 
 }

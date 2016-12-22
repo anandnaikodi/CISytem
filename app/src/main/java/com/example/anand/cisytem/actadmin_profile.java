@@ -96,7 +96,8 @@ public class actadmin_profile extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            onBackPressed();
             return true;
         }
 
@@ -111,9 +112,15 @@ public class actadmin_profile extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
+        }
+        else if (id == R.id.nav_announcements) {
+            // Handle the camera action
         } else if (id == R.id.nav_category) {
 
         } else if (id == R.id.nav_upload) {
+
+        }
+        else if (id == R.id.nav_studentlist) {
 
         }
 
@@ -134,14 +141,19 @@ public class actadmin_profile extends AppCompatActivity
             case R.id.nav_home:
                 fragment = new actadmin_home();
                 break;
+            case R.id.nav_announcements:
+                fragment = new actadmin_announcements();
+                break;
             case R.id.nav_category:
                 fragment = new actadmin_category();
                 break;
             case R.id.nav_upload:
                 fragment = new actadmin_upload();
                 break;
+            case R.id.nav_studentlist:
+                fragment = new actadmin_studentlist();
+                break;
         }
-
         //replacing the fragment
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

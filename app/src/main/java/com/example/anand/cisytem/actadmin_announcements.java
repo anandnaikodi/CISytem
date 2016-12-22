@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -28,46 +27,52 @@ import MyCustomPackage.CustomAdapter;
 import MyCustomPackage.RowItem;
 import MyCustomPackage.constants;
 
-public class actadmin_home extends Fragment {
+/**
+ * Created by anand on 03-11-2016.
+ */
+
+
+
+/**
+ * Created by Belal on 18/09/16.
+ */
+
+
+public class actadmin_announcements extends Fragment {
+
     String[] id_array;
 
-    ////    String[] member_names;
+////    String[] member_names;
 ////    TypedArray profile_pics;
     String[] status;
     String[] contactType;
 
     List<RowItem> rowItems;
     ListView mylistview;
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //returning our layout file
+        //change R.layout.yourlayoutfilename for each of your fragments
+        return inflater.inflate(R.layout.activity_adminfrag_announcements, container, false);
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.activity_adminfrag_home, container, false);
-
-    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
         super.onViewCreated(view, savedInstanceState);
+        //you can set the title for your toolbar here for different fragments different titles
+        //getActivity().setTitle("home");
         loaddata();
-        addclassid();
+
+        //start_adapter();
     }
 
-    private void addclassid()
-    {
-        TextView classid=(TextView)getView().findViewById(R.id.txtclassid);
-        classid.setText("Class Room id = "+constants.classroom_id);
-    }
+
     private void loaddata()
     {
 // TODO: 12-11-2016 proper url with cr id[done]
-        String query="select * from announcement where crid='"+ constants.id+"' order by id DESC limit 3";
+        String query="select * from announcement where crid='"+constants.id+"' order by id DESC";
         try{
             query= URLEncoder.encode(query,"UTF-8");
         }
@@ -179,5 +184,4 @@ public class actadmin_home extends Fragment {
 
         //mylistview.setOnItemClickListener(this);
     }
-
 }

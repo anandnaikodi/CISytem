@@ -7,6 +7,11 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/home"
             android:title="Home" />
+
+        <item
+            android:id="@+id/nav_announcements"
+            android:icon="@color/white"
+            android:title="Announcement" />
         <item
             android:id="@+id/nav_category"
             android:icon="?android:attr/actionModePasteDrawable"
@@ -15,8 +20,13 @@
             android:id="@+id/nav_upload"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Upload" />
+        <item
+            android:id="@+id/nav_studentlist"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Student List" />
 
     </group>
+
 
 
 </menu>
